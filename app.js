@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var config = require('config.json')('./config.json');
+var config = require('config.json')('./nodemon.json');
 
 /**Adding in Mirror utils **/
 var mirror = require('mirror-utils');
@@ -17,6 +17,8 @@ var cardUtils = new mirror.Card();
 var contactUtils = new mirror.Contacts();
 var menuUtils = new mirror.Menu();
 
+console.log(process.env);
+console.log(config);
 
 var app = express();
 
@@ -51,8 +53,13 @@ app.use('/oauth2callback', function(req, res){
     });
 });
 
+function failure(){
+console.log(arguments);
+}
 
-
+function success(){
+  console.log(arguments);
+}
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -86,7 +93,7 @@ app.use(function(err, req, res, next) {
 });
 
 //app.set('port', process.env.PORT || 4000);
-app.listen(4000);
+app.listen(8081);
 console.log("now listening on port: " + 4000);
 
 module.exports = app;
