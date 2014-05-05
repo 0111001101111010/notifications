@@ -11,7 +11,7 @@ var config = require('config.json')('./config.json');
 
 /**Adding in Mirror utils **/
 var mirror = require('mirror-utils');
-console.log(config);
+//console.log(config);
 var authUtils = new mirror.Auth();
 var cardUtils = new mirror.Card();
 var contactUtils = new mirror.Contacts();
